@@ -3,6 +3,8 @@ package com.brightslearning.webapp.TripleABlogEngine.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -14,7 +16,12 @@ public class User {
     private String password;
     private UserTypes userType;
     private boolean isOnline;
-//test
+
+    @OneToMany
+    private Set<Post> posts;
+    @OneToMany
+    private Set<Comment> comments;
+
     public int getId() {
         return Id;
     }
@@ -53,5 +60,21 @@ public class User {
 
     public void setOnline(boolean online) {
         isOnline = online;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

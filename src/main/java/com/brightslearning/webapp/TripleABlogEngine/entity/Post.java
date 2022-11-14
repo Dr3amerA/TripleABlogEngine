@@ -6,7 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -23,6 +25,9 @@ public class Post {
 
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
+
+    @OneToMany
+    private Set<Comment> comments;
 
     public int getId() {
         return id;
@@ -86,5 +91,13 @@ public class Post {
 
     public void setUpdateDateTime(LocalDateTime updateDateTime) {
         this.updateDateTime = updateDateTime;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }
