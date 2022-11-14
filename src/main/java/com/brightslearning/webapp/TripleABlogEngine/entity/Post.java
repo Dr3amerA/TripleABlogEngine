@@ -14,7 +14,7 @@ import java.util.Set;
 public class Post {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String title;
     private String body;
     private String creatorId;
@@ -33,7 +33,7 @@ public class Post {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
