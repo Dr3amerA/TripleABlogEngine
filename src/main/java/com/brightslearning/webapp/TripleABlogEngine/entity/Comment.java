@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 public class Comment {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String comment;
-    private String userID;
-    private String postID;
+    private Integer userID;
+    private Integer postID;
     private boolean isVisible;
     @CreationTimestamp
     private LocalDateTime createDateTime;
@@ -36,19 +36,19 @@ public class Comment {
         this.comment = comment;
     }
 
-    public String getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
-    public String getPostID() {
+    public Integer getPostID() {
         return postID;
     }
 
-    public void setPostID(String postID) {
+    public void setPostID(Integer postID) {
         this.postID = postID;
     }
 

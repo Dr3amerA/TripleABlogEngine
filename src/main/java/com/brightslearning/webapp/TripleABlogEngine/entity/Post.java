@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-public class Post {
+public class Post implements Comparable<Post>{
     @Id
     @GeneratedValue
     private Integer id;
     private String title;
     private String body;
-    private String creatorId;
-    private String editorId;
+    private Integer creatorId;
+    private Integer editorId;
     private boolean isVisible;
     @CreationTimestamp
     private LocalDateTime createDateTime;
@@ -29,7 +29,7 @@ public class Post {
     @OneToMany
     private Set<Comment> comments;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -53,19 +53,19 @@ public class Post {
         this.body = body;
     }
 
-    public String getCreatorId() {
+    public Integer getCreatorId() {
         return creatorId;
     }
 
-    public void setCreatorId(String creatorId) {
+    public void setCreatorId(Integer creatorId) {
         this.creatorId = creatorId;
     }
 
-    public String getEditorId() {
+    public Integer getEditorId() {
         return editorId;
     }
 
-    public void setEditorId(String editorId) {
+    public void setEditorId(Integer editorId) {
         this.editorId = editorId;
     }
 
@@ -99,5 +99,10 @@ public class Post {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public int compareTo(Post o) {
+        return this.getCreateDateTime().compareTo(o.getCreateDateTime());
     }
 }
