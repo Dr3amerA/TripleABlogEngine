@@ -7,16 +7,16 @@
 </head>
 <body>
      <table class="blogBorder" th:each="post: ${posts}">
-        <tr class="blogTitle"><td th:text="${post.title}"/></tr>
-        <tr class="blogBody"><td th:text="${post.body}"/></tr>
-        <tr class="blogCreator"><td th:text="${post.creatorId}"/></tr>
-        <tr class="blogDateTime"><td th:text="${#temporals.format(post.createDateTime, 'dd-MM-yyyy HH:mm:ss')}"/></tr>
+        <tr class="blogTitle"><td th:text="${post.title}"></td></tr>
+        <tr class="blogBody"><td th:text="${post.body}"></td></tr>
+        <tr class="blogCreator"><td th:text="${post.creator.userName}"></td></tr>
+        <tr class="blogDateTime"><td th:text="${#temporals.format(post.createDateTime, 'dd-MM-yyyy HH:mm:ss')}"></td></tr>
          <tr><table class="commentBorder" th:each="comment: ${post.comments}">
-             <tr class="comment"><td th:text="${comment.comment}"/></tr>
-             <tr class="blogCreator"><td th:text="${comment.userID}"/></tr>
-             <tr class="blogDateTime"><td th:text="${#temporals.format(comment.createDateTime, 'dd-MM-yyyy HH:mm:ss')}"/></tr>
+             <tr class="comment"><td th:text="${comment.comment}"></td></tr>
+             <tr class="blogCreator"><td th:text="${comment.creator.userName}"></td></tr>
+             <tr class="blogDateTime"><td th:text="${#temporals.format(comment.createDateTime, 'dd-MM-yyyy HH:mm:ss')}"></td></tr>
          </table>
-
+             th:text="${#lists.sort(myList, reverse)}"
      </table>
 </body>
 </html>

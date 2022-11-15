@@ -1,7 +1,6 @@
 package com.brightslearning.webapp.TripleABlogEngine.controllers;
 
 import com.brightslearning.webapp.TripleABlogEngine.entity.Post;
-import com.brightslearning.webapp.TripleABlogEngine.service.CommentHTMLService;
 import com.brightslearning.webapp.TripleABlogEngine.service.FillDatabase;
 import com.brightslearning.webapp.TripleABlogEngine.service.PostHTMLService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,12 @@ import java.util.List;
 public class BlogController {
 
     private PostHTMLService postHTMLService;
-    private CommentHTMLService commentHTMLService;
     private FillDatabase fillDatabase;
 
     @Autowired
-    public BlogController(PostHTMLService postHTMLService, CommentHTMLService commentHTMLService, FillDatabase fillDatabase) {
+    public BlogController(PostHTMLService postHTMLService,
+                          FillDatabase fillDatabase) {
         this.postHTMLService = postHTMLService;
-        this.commentHTMLService = commentHTMLService;
         this.fillDatabase = fillDatabase;
     }
 
@@ -48,29 +46,8 @@ public class BlogController {
 
         List<Post> posts = postHTMLService.getPostsInHTML();
 
-//        List<User> users = new ArrayList<>();
-//        User user1 = new User();
-//        user1.setId(1);
-//        user1.setUsername("Adam");
-//        User user2 = new User();
-//        user1.setId(2);
-//        user1.setUsername("Alexandros");
-//        User user3 = new User();
-//        user1.setId(3);
-//        user1.setUsername("ATtila");
-//        users.add(user1);
-//        users.add(user2);
-//        users.add(user3);
         model.addAttribute("posts", posts);
-//        model.addAttribute("users", users);
 
         return "blogspot";
     }
-
-//    @GetMapping("/blogspot")
-//    @ResponseBody
-//    public String showPosts() {
-//        String response = postHTMLService.getPostsInHTML();
-//        return response;
-//    }
 }

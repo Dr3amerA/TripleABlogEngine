@@ -11,31 +11,31 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Integer Id;
-    private String username;
+    private Integer id;
+    private String userName;
     private String password;
     private UserTypes userType;
     private boolean isOnline;
 
-    @OneToMany
+    @OneToMany (mappedBy = "creator")
     private Set<Post> posts;
-    @OneToMany
+    @OneToMany (mappedBy = "creator")
     private Set<Comment> comments;
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String username) {
+        this.userName = username;
     }
 
     public String getPassword() {

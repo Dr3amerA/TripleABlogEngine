@@ -15,7 +15,6 @@ public class Post implements Comparable<Post>, Serializable {
     private Integer id;
     private String title;
     private String body;
-    private Integer creatorId;
     private Integer editorId;
     private boolean isVisible;
     @CreationTimestamp
@@ -24,12 +23,11 @@ public class Post implements Comparable<Post>, Serializable {
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
 
-    @OneToMany
+    @OneToMany (mappedBy = "post")
     private Set<Comment> comments;
 
     @ManyToOne
-//    @JoinColumn(name = "creatorId")
-    private User user;
+    private User creator;
 
     public Integer getId() {
         return id;
@@ -53,14 +51,6 @@ public class Post implements Comparable<Post>, Serializable {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public Integer getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(Integer creatorId) {
-        this.creatorId = creatorId;
     }
 
     public Integer getEditorId() {
@@ -103,12 +93,12 @@ public class Post implements Comparable<Post>, Serializable {
         this.comments = comments;
     }
 
-    public User getUser() {
-        return user;
+    public User getCreator() {
+        return creator;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     @Override

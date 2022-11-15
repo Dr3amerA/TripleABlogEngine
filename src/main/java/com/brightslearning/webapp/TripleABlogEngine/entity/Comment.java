@@ -1,10 +1,8 @@
 package com.brightslearning.webapp.TripleABlogEngine.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,15 +11,15 @@ public class Comment {
     @GeneratedValue
     private Integer id;
     private String comment;
-    private Integer userID;
-    private Integer postID;
     private boolean isVisible;
     @CreationTimestamp
     private LocalDateTime createDateTime;
 
     @ManyToOne
-//    @JoinColumn(name = "userID")
-    private User user;
+    private Post post;
+
+    @ManyToOne
+    private User creator;
 
     public Integer getId() {
         return id;
@@ -39,22 +37,6 @@ public class Comment {
         this.comment = comment;
     }
 
-    public Integer getUserID() {
-        return userID;
-    }
-
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
-
-    public Integer getPostID() {
-        return postID;
-    }
-
-    public void setPostID(Integer postID) {
-        this.postID = postID;
-    }
-
     public boolean isVisible() {
         return isVisible;
     }
@@ -69,5 +51,21 @@ public class Comment {
 
     public void setCreateDateTime(LocalDateTime createDateTime) {
         this.createDateTime = createDateTime;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 }

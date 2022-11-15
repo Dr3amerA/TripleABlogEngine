@@ -1,6 +1,7 @@
 .blogBorder {
     border: 1px solid blue;
     border-collapse: collapse;
+    width: 50%;
 }
 .blogTitle {
     font-weight: bold;
@@ -19,5 +20,6 @@
     color: darkgreen;
 }
 .commentBorder {
-
+    border: 1px solid green;
+    border-collapse: collapse;
 }
