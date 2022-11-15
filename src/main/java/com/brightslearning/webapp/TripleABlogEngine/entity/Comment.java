@@ -3,9 +3,8 @@ package com.brightslearning.webapp.TripleABlogEngine.entity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,11 +19,15 @@ public class Comment {
     @CreationTimestamp
     private LocalDateTime createDateTime;
 
-    public int getId() {
+    @ManyToOne
+//    @JoinColumn(name = "userID")
+    private User user;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

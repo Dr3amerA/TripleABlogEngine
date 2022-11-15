@@ -3,15 +3,13 @@ package com.brightslearning.webapp.TripleABlogEngine.entity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-public class Post implements Comparable<Post>{
+public class Post implements Comparable<Post>, Serializable {
     @Id
     @GeneratedValue
     private Integer id;
@@ -28,6 +26,10 @@ public class Post implements Comparable<Post>{
 
     @OneToMany
     private Set<Comment> comments;
+
+    @ManyToOne
+//    @JoinColumn(name = "creatorId")
+    private User user;
 
     public Integer getId() {
         return id;
@@ -99,6 +101,14 @@ public class Post implements Comparable<Post>{
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

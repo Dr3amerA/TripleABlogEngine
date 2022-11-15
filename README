@@ -1,0 +1,21 @@
+A changed the application.property entry:
+spring.jpa.hibernate.ddl-auto=create
+
+This link fills up the database with all the data
+http://localhost:8080/filldb?code=AAA
+I could not do it from Test, so I created a new interface (FillDatabase), and implemented it
+to do the job.
+
+And this link shows our blogspot in its current phase
+http://localhost:8080/blogspot
+
+I think we have problems with database relations.
+In the  public void createTestData() method I had to insert data into
+user_posts
+user_comments
+post_comments
+tables, they were not following the tables they link.
+
+And probably the ManyToOne relationship between Post and USer and between Comment and USer is
+not OK, that is why in blogspot.html I cannot change post.creatorID to post.user.username, and
+comment.userID to comment.user.username. The user is null in these cases.

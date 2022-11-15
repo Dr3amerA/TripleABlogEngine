@@ -1,0 +1,23 @@
+.blogBorder {
+    border: 1px solid blue;
+    border-collapse: collapse;
+}
+.blogTitle {
+    font-weight: bold;
+    color: blue;
+}
+.blogBody {
+    color: dodgerblue;
+}
+.blogCreator {
+    font-style: italic;
+}
+.blogDateTime {
+    color: dimgrey;
+}
+.comment {
+    color: darkgreen;
+}
+.commentBorder {
+
+}
